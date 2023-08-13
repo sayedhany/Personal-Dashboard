@@ -9,15 +9,27 @@
   border-radius: 12px;
   margin: 12px;
   margin-top: 50px;
+  .tab-tile {
+    padding: 10px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.79, 0.06, 0.36, 1.44);
+    // border-radius: 10px;
+    display: flex;
+    cursor: pointer;
+    opacity: 0.7;
+    i {
+      color: #222;
+    }
+  }
   .tab {
     cursor: pointer;
 
     border-bottom: 3px solid transparent;
     &.active {
-      border-bottom: 3px solid rgb(158, 158, 158);
+      border-bottom: 3px solid #f8b5a5;
 
       .tab-tile {
-        transform: translateY(-100%) scale(1.15);
+        transform: translateY(-28px) scale(1.15);
         opacity: 1;
         &::before {
           border-radius: 50%;
@@ -25,27 +37,15 @@
       }
     }
     &:hover {
-      border-bottom: 3px solid rgb(158, 158, 158);
+      border-bottom: 3px solid#f8b5a5;
 
       .tab-tile {
-        transform: translateY(-100%) scale(1.15);
+        transform: translateY(-28px) scale(1.15);
         opacity: 1;
         &::before {
           border-radius: 50%;
         }
       }
-    }
-  }
-  .tab-tile {
-    padding: 10px;
-    position: relative;
-    transition: all 0.3s;
-    // border-radius: 10px;
-    display: flex;
-    cursor: pointer;
-    opacity: 0.7;
-    i {
-      color: #222;
     }
   }
 }
