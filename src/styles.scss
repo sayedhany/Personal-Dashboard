@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("./assets/minireset.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&family=Open+Sans:wght@300;400;500;600;700;800&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons+Outlined");
+html {
+  font-family: "Inter", sans-serif;
+}
+body {
+  height: 100vh;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 40px;
+}
+a {
+  text-decoration: none;
+}
