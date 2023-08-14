@@ -1,0 +1,20 @@
+.bookmarks-wrapper {
+  height: 100%;
+  // background-color: wheat;
+  // .container {
+  //   height: 100%;
+  // }
+  .bookmark-tile-container {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    max-height: 263px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+}
