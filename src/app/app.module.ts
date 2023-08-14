@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -16,13 +16,10 @@ import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
     BookmarksComponent,
     TodosComponent,
     NotesComponent,
-    BookmarkTileComponent
+    BookmarkTileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

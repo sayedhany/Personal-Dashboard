@@ -3,8 +3,8 @@
     <h1>{{ time }}</h1>
     <h2>{{ date }}</h2>
   </div>
-  <div class="content-section">
-    <router-outlet></router-outlet>
+  <div class="content-section" [@routAnim]="preparRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
   <div class="bottom-section">
     <app-tabs></app-tabs>

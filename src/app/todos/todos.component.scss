@@ -12,7 +12,8 @@
     cursor: pointer;
 
     .todo-item-text {
-      color: rgba(white, 0.9);
+      color: rgba(white, 0.8);
+      transition: all 0.3s;
     }
     .check-box {
       padding: 4px;
@@ -34,12 +35,28 @@
       transition: all 0.3s;
     }
     &:hover {
-      i {
-        // visibility: visible;
-        opacity: 1;
-      }
+      // i {
+      //   // visibility: visible;
+      //   opacity: 1;
+      // }
       .todo-item-text {
         color: white;
+      }
+      .check-box {
+        border-color: transparent;
+        background-color: rgba(white, 0.5);
+      }
+    }
+    &.completed {
+      .todo-item-text {
+        color: rgba(white, 0.78);
+      }
+      .check-box {
+        background-color: greenyellow;
+        border-color: transparent;
+      }
+      i {
+        opacity: 1;
       }
     }
   }
