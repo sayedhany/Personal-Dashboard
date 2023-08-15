@@ -4,9 +4,11 @@ import {
   style,
   animate,
   query,
+  group,
 } from '@angular/animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// import { group } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -14,26 +16,47 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routAnim', [
-      transition('* => *', [
-        query(
-          ':enter',
-          [
-            style({ background: 'wheat', display: 'block' }),
-            animate(1000, style({ background: '*' })),
-          ],
-          {
-            optional: true,
-          }
-        ),
-        style({
-          background: 'blue',
-        }),
-        animate(
-          1000,
-          style({
-            background: 'red',
-          })
-        ),
+      transition(':increment', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' })),
+        group([
+          query(':leave', [
+            animate(
+              '200ms ease-in',
+              style({ opacity: 0, transform: 'translateX(80px)' })
+            ),
+          ]),
+          query(':enter', [
+            style({
+              opacity: 0,
+              transform: 'translateX(-80px)',
+            }),
+            animate(
+              '200ms 100ms ease-out',
+              style({ opacity: 1, transform: 'translateX(0)' })
+            ),
+          ]),
+        ]),
+      ]),
+      transition(':decrement', [
+        query(':enter, :leave', style({ position: 'fixed', width: '100%' })),
+        group([
+          query(':leave', [
+            animate(
+              '200ms ease-in',
+              style({ opacity: 0, transform: 'translateX(-80px)' })
+            ),
+          ]),
+          query(':enter', [
+            style({
+              opacity: 0,
+              transform: 'translateX(80px)',
+            }),
+            animate(
+              '200ms 100ms ease-out',
+              style({ opacity: 1, transform: 'translateX(0)' })
+            ),
+          ]),
+        ]),
       ]),
     ]),
   ],
@@ -62,9 +85,15 @@ export class AppComponent {
     });
     console.log(this.date);
   }
+  /**
+   * Retrieves the snapshot URL from the activated route of the given RouterOutlet.
+   *
+   * @param {RouterOutlet} outlet - The RouterOutlet object to retrieve the snapshot URL from.
+   * @return {SnapshotUrl[]} - An array containing the snapshot URL.
+   */
   preparRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) {
-      return outlet.activatedRoute.snapshot.url;
+      return outlet.activatedRouteData['tabNumber'];
     }
   }
 }
