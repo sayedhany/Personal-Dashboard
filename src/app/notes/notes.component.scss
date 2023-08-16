@@ -5,6 +5,7 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
   .note-card {
     background: rgba(black, 0.5);
     color: rgba(white, 0.95);
@@ -21,6 +22,19 @@
       font-weight: 600;
       font-size: 20px;
       margin-bottom: 7px;
+    }
+  }
+  .buttons-container {
+    display: flex;
+    &.btn-centered {
+      justify-content: center;
+      align-items: center;
+    }
+    .add-btn {
+      i {
+        margin-right: 5px;
+        margin-left: -3px;
+      }
     }
   }
 }

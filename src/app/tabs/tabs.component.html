@@ -9,7 +9,12 @@
       <i class="material-icons-outlined">check</i>
     </div>
   </a>
-  <a routerLink="notes" routerLinkActive="active" class="tab notes-tab">
+  <a
+    routerLink="notes"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="tab notes-tab"
+  >
     <div class="tab-tile">
       <i class="material-icons-outlined">notes</i>
     </div>
