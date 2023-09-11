@@ -1,0 +1,32 @@
+<div class="edit-note-wrapper container has-blurred-white-bg">
+  <h2 class="is-bold">Edit Note</h2>
+  <p *ngIf="!note">Note not found</p>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" *ngIf="note">
+    <input
+      class="textbox"
+      type="text"
+      placeholder="enter edit title...."
+      name="title"
+      ngModel
+      required
+      minlength="3"
+      [(ngModel)]="title"
+
+    />
+    <textarea
+      type="text"
+      placeholder="enter edit content...."
+      name="content"
+      ngModel
+      [(ngModel)]="content"
+      required
+    ></textarea>
+    <div class="buttons-container">
+      <a [routerLink]="['../../']" class="btn">Cancel</a>
+      <button class="btn" type="button" (click)="onDelete()" [disabled]="!form.valid">Delete</button>
+      <button [disabled]="!form.valid" type="submit" class="btn">
+        Edit Note
+      </button>
+    </div>
+  </form>
+</div>

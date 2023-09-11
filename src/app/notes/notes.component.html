@@ -1,17 +1,13 @@
 <div class="notes-wrapper">
   <div class="container">
     <div class="notes-list">
-      <div class="note-card">
-        <div class="note-card-title">this is title</div>
-        <div class="note-card-content">I'm content</div>
-      </div>
-      <div class="note-card">
-        <div class="note-card-title">this is title</div>
-        <div class="note-card-content">I'm content</div>
-      </div>
+      <app-note-card *ngFor="let note of notes" [note]="note"></app-note-card>
+
+        <p *ngIf="notes.length === 0" style="color: white;font-size: 20px;text-align: center;margin-bottom: 20px;">no notes found</p>
+
     </div>
     <div class="buttons-container btn-centered">
-      <a [routerLink]="['add']" class="btn add-btn">
+      <a routerLink="add" class="btn add-btn">
         <i class="material-icons-outlined">add</i> Add</a
       >
     </div>

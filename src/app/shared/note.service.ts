@@ -6,7 +6,12 @@ import { Note } from './note.model';
 })
 export class NoteService {
   notes: Note[];
-  constructor() {}
+  constructor() {
+    this.notes = [
+      new Note('test title', 'test content'),
+      new Note('test title 1', 'Dad'),
+    ];
+  }
   getNotes() {
     return this.notes.slice();
   }
