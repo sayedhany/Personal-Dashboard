@@ -5,6 +5,7 @@ import { TodosComponent } from './todos/todos.component';
 import { NotesComponent } from './notes/notes.component';
 import { AddNoteComponent } from './notes/add-note/add-note.component';
 import { EditNoteComponent } from './notes/edit-note/edit-note.component';
+import { TodoAddComponent } from './todos/todo-add/todo-add.component';
 
 const routes: Routes = [
   { path: 'bookmarks', component: BookmarksComponent, data: { tabNumber: 1 } },
@@ -16,6 +17,7 @@ const routes: Routes = [
     component: EditNoteComponent,
     data: { tabNumber: 5 },
   },
+  { path: 'todos/add', component: TodoAddComponent, data: { tabNumber: 6 } },
 ];
 
 @NgModule({

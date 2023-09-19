@@ -1,0 +1,6 @@
+<div  [ngClass]="{'completed': todo.completed}" class="todo-item " (click)="onClick(todo)">
+  <div class="check-box">
+    <i class="material-icons-outlined">check</i>
+  </div>
+  <div class="todo-item-text">{{todo.text}}</div>
+</div>

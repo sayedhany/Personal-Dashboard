@@ -68,3 +68,17 @@ button:disabled:active {
   background: rgba(white, 0.85);
   backdrop-filter: blur(20px);
 }
+.buttons-container {
+  display: flex;
+  &.btn-centered {
+    justify-content: center;
+    align-items: center;
+  }
+  .add-btn {
+    cursor: pointer;
+    i {
+      margin-right: 5px;
+      margin-left: -3px;
+    }
+  }
+}
