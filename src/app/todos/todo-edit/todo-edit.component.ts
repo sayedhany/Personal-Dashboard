@@ -10,16 +10,24 @@ import { TodoService } from 'src/app/shared/todo.service';
 })
 export class TodoEditComponent implements OnInit {
   todo: Todo;
+  text: string;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private todoSrv: TodoService
+    private todoService: TodoService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((p) => {
       const id = p['id'];
-      this.todo = this.todoSrv.getTodo(id);
+      this.todo = this.todoService.getTodo(id);
       console.log(this.todo);
+      this.text = this.todo.text;
     });
+  }
+  onSubmit(value: any) {
+    console.log(value);
+    this.todoService.updateTodo(this.todo.id, {text: this.text})
+    this.route.navigate(['todos']);
   }
 }

@@ -11,8 +11,12 @@
       required
       minlength="3"
       [(ngModel)]="title"
-
+      #textField="ngModel"
     />
+    <ng-container *ngIf="textField.invalid && textField.touched">
+      <p *ngIf="textField.errors.required">Please enter some text for this input</p>
+      <p *ngIf="textField.errors.minlength">Text must be more than 3 letters.</p>
+    </ng-container>
     <textarea
       type="text"
       placeholder="enter edit content...."
@@ -23,7 +27,7 @@
     ></textarea>
     <div class="buttons-container">
       <a [routerLink]="['../../']" class="btn">Cancel</a>
-      <button class="btn" type="button" (click)="onDelete()" [disabled]="!form.valid">Delete</button>
+      <button class="btn" type="button" (click)="onDelete()">Delete</button>
       <button [disabled]="!form.valid" type="submit" class="btn">
         Edit Note
       </button>

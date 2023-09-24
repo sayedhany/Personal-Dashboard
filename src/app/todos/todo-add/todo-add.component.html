@@ -9,7 +9,12 @@
       ngModel
       required
       minlength="3"
+      #textField="ngModel"
     />
+    <ng-container *ngIf="textField.invalid && textField.touched">
+      <p style="color: red;" *ngIf="textField.errors.required">Please enter some text for this input</p>
+      <p style="color: red;" *ngIf="textField.errors.minlength">Text must be more than 3 letters.</p>
+    </ng-container>
     <div class="buttons-container">
       <a routerLink="../" class="btn">Cancel</a>
       <button [disabled]="!form.valid" type="submit" class="btn">
