@@ -1,4 +1,7 @@
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Todo } from 'src/app/shared/todo.model';
+import { TodoService } from 'src/app/shared/todo.service';
 
 @Component({
   selector: 'app-todo-edit',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-edit.component.scss'],
 })
 export class TodoEditComponent implements OnInit {
-  constructor() {}
+  todo: Todo;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private todoSrv: TodoService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((p) => {
+      const id = p['id'];
+      this.todo = this.todoSrv.getTodo(id);
+      console.log(this.todo);
+    });
+  }
 }
