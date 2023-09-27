@@ -7,6 +7,8 @@ import { AddNoteComponent } from './notes/add-note/add-note.component';
 import { EditNoteComponent } from './notes/edit-note/edit-note.component';
 import { TodoAddComponent } from './todos/todo-add/todo-add.component';
 import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
+import { AddBookmarkComponent } from './bookmarks/add-bookmark/add-bookmark.component';
+import { EditBookmarkComponent } from './bookmarks/edit-bookmark/edit-bookmark.component';
 
 const routes: Routes = [
   { path: 'bookmarks', component: BookmarksComponent, data: { tabNumber: 1 } },
@@ -24,6 +26,9 @@ const routes: Routes = [
     component: TodoEditComponent,
     data: { tabNumber: 7 },
   },
+  { path: 'bookmarks/add', component: AddBookmarkComponent, data: { tabNumber: 7 }},
+  { path: 'bookmarks/:id/edit', component: EditBookmarkComponent, data: { tabNumber: 8 }}
+
 ];
 
 @NgModule({

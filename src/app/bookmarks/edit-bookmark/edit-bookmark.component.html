@@ -1,0 +1,36 @@
+<div class="edit-bookmark-wrapper container has-blurred-white-bg">
+  <h2 class="is-bold">Edit Bookmark</h2>
+  <p *ngIf="!bookmark">Bookmark not found</p>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" *ngIf="bookmark">
+    <input
+      class="textbox"
+      type="text"
+      placeholder="enter edit name...."
+      name="name"
+      ngModel
+      required
+      minlength="3"
+      [(ngModel)]="name"
+      #textField="ngModel"
+    />
+    <ng-container *ngIf="textField.invalid && textField.touched">
+      <p *ngIf="textField.errors.required">Please enter some text for this input</p>
+      <p *ngIf="textField.errors.minlength">Text must be more than 3 letters.</p>
+    </ng-container>
+    <textarea
+      type="text"
+      placeholder="enter edit url...."
+      name="url"
+      ngModel
+      [(ngModel)]="url"
+      required
+    ></textarea>
+    <div class="buttons-container">
+      <a [routerLink]="['../../']" class="btn">Cancel</a>
+      <button class="btn" type="button" (click)="onDelete()">Delete</button>
+      <button [disabled]="!form.valid" type="submit" class="btn">
+        Edit Note
+      </button>
+    </div>
+  </form>
+</div>
