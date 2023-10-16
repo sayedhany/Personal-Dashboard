@@ -1,0 +1,25 @@
+.manage-bookmark-wrapper{
+  display: flex;
+  height: 100%;
+
+}
+.sidebar{
+  height: 100%;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  backdrop-filter: blur(8px);
+}
+.content{
+  flex-grow: 1;
+  background-color: white;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.sidebar-heading{
+  color: rgba(white, 0.8);
+  font-weight: 600;
+  font-size: 20px;
+  padding: 25px;
+}

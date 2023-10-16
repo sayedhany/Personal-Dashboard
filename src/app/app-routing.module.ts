@@ -9,6 +9,7 @@ import { TodoAddComponent } from './todos/todo-add/todo-add.component';
 import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
 import { AddBookmarkComponent } from './bookmarks/add-bookmark/add-bookmark.component';
 import { EditBookmarkComponent } from './bookmarks/edit-bookmark/edit-bookmark.component';
+import { ManageBookmarksComponent } from './bookmarks/manage-bookmarks/manage-bookmarks.component';
 
 const routes: Routes = [
   { path: 'bookmarks', component: BookmarksComponent, data: { tabNumber: 1 } },
@@ -27,6 +28,7 @@ const routes: Routes = [
     data: { tabNumber: 7 },
   },
   { path: 'bookmarks/add', component: AddBookmarkComponent, data: { tabNumber: 7 }},
+  { path: 'bookmarks/manage', component: ManageBookmarksComponent},
   { path: 'bookmarks/:id/edit', component: EditBookmarkComponent, data: { tabNumber: 8 }}
 
 ];
