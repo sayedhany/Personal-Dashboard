@@ -1,3 +1,4 @@
+import { NotificationService } from './../../shared/notification.service';
 import { BookmarkService } from './../../shared/bookmark.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bookmark } from './../../shared/bookmark.model';
@@ -12,7 +13,7 @@ export class EditBookmarkComponent implements OnInit {
   name: string;
   url: string;
   bookmark: Bookmark;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private bookmarkSrv: BookmarkService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private bookmarkSrv: BookmarkService, private notificationSrv: NotificationService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param=>{
@@ -27,6 +28,7 @@ export class EditBookmarkComponent implements OnInit {
   onSubmit(value: any){
     this.bookmarkSrv.updateBookmark(this.bookmark.id, value);
     this.router.navigate(['../', "bookmarks"])
+    this.notificationSrv.show("Bookmark Updated")
   }
   onDelete(){
     this.bookmarkSrv.deleteBookmark(this.bookmark.id)

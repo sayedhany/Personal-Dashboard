@@ -2,6 +2,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/shared/todo.model';
 import { TodoService } from 'src/app/shared/todo.service';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-todo-edit',
@@ -14,7 +15,8 @@ export class TodoEditComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private todoService: TodoService,
-    private route: Router
+    private route: Router,
+    private notificationSrv: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -29,5 +31,7 @@ export class TodoEditComponent implements OnInit {
     console.log(value);
     this.todoService.updateTodo(this.todo.id, {text: this.text})
     this.route.navigate(['todos']);
+    this.notificationSrv.show("Edited Todo")
+    
   }
 }
