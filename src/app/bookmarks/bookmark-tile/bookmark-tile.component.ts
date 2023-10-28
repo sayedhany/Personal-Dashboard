@@ -7,10 +7,12 @@ import { Bookmark } from '../../shared/bookmark.model';
   styleUrls: ['./bookmark-tile.component.scss']
 })
 export class BookmarkTileComponent implements OnInit {
-  @Input() bookmark: Bookmark
+  @Input() bookmark: Bookmark;
+  faviconError: Boolean;
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

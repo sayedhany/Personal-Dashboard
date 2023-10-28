@@ -1,5 +1,5 @@
 <div class="edit-bookmark-wrapper container has-blurred-white-bg">
-  <h2 class="is-bold">Edit Bookmark</h2>
+  <h2 class="is-bold">{{ bookmark.name}}</h2>
   <p *ngIf="!bookmark">Bookmark not found</p>
   <form #form="ngForm" (ngSubmit)="onSubmit(form.value)" *ngIf="bookmark">
     <input
@@ -26,10 +26,10 @@
       required
     ></textarea>
     <div class="buttons-container">
-      <a [routerLink]="['../../']" class="btn">Cancel</a>
+      <a [routerLink]="['../../../']" class="btn">Cancel</a>
       <button class="btn" type="button" (click)="onDelete()">Delete</button>
       <button [disabled]="!form.valid" type="submit" class="btn">
-        Edit Note
+        Save
       </button>
     </div>
   </form>

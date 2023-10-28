@@ -1,4 +1,7 @@
-<a class="bookmark-tile" [routerLink]="[bookmark.id, 'edit']">
-  <img [src]="bookmark.url" [alt]="bookmark.name" width="32" height="32"/>
-  <p class="tile-text">{{bookmark.name}}</p>
+<a class="bookmark-tile">
+  <ng-container *ngIf="!faviconError">
+    <img [src]="bookmark.url" [alt]="bookmark.name" width="32" height="32" (error)="faviconError = true" />
+    <p class="tile-text">{{bookmark.name}}</p>
+  </ng-container>
+  <div style="color: white;font-size: 25px;" *ngIf="faviconError">{{bookmark.name[0] | uppercase}}</div>
 </a>

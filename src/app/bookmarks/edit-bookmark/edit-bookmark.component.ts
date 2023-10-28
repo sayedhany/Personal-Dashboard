@@ -15,12 +15,14 @@ export class EditBookmarkComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private bookmarkSrv: BookmarkService) { }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id']
-    this.bookmark = this.bookmarkSrv.getBookmark(id);
-    console.log(this.bookmark, id);
+    this.activatedRoute.params.subscribe(param=>{
 
-    this.name = this.bookmark.name
-    this.url = this.bookmark.url.toString()
+      this.bookmark = this.bookmarkSrv.getBookmark(param['id']);
+      console.log(param, "param");
+      this.name = this.bookmark.name;
+      this.url = this.bookmark.url.toString();
+    })
+
   }
   onSubmit(value: any){
     this.bookmarkSrv.updateBookmark(this.bookmark.id, value);

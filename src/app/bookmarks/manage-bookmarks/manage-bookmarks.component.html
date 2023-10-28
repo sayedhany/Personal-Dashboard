@@ -1,6 +1,14 @@
 <div class="manage-bookmark-wrapper container ">
   <div class="sidebar">
     <h4 class="sidebar-heading">Your Bookmarks</h4>
+    <div class="sidebar-items">
+      <ng-container *ngIf="bookmarks.length === 0">
+        <p style="text-align: center; ">there is no more bookmarks</p>
+      </ng-container>
+      <a [routerLink]="[bookmark.id, 'edit']" routerLinkActive="active-bookmark" class="sidebar-item" *ngFor="let bookmark of bookmarks">{{bookmark.name}}</a>
+    </div>
   </div>
-  <div class="content has-blurred-white-bg"></div>
+  <div class="content has-blurred-white-bg">
+    <router-outlet></router-outlet>
+  </div>
 </div>
