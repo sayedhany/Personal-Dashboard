@@ -29,8 +29,8 @@ const routes: Routes = [
   },
   { path: 'bookmarks/add', component: AddBookmarkComponent, data: { tabNumber: 7 }},
   { path: 'bookmarks/manage', component: ManageBookmarksComponent, children:[
-    { path: ':id/edit', component: EditBookmarkComponent, data: { tabNumber: 8 }}
-  ]},
+    { path: ':id/edit', component: EditBookmarkComponent, data: { tabNumber: 9 }}
+  ],data: { tabNumber: 8 }},
 
 ];
 

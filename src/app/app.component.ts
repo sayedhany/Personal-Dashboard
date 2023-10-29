@@ -59,13 +59,31 @@ import { RouterOutlet } from '@angular/router';
         ]),
       ]),
     ]),
+    trigger("bgAnim",[
+      transition(":leave",[
+        animate(1000,style({
+          opacity: 0
+        }))
+      ])
+    ]),
+    trigger("fadeAnim",[
+      transition(":enter",[
+        style({opacity: 0}),
+        animate(250, style({opacity: 1}))
+      ]),
+      transition(":leave",[
+        animate(250, style({opacity: 0}))
+      ]),
+    ])
   ],
 })
 export class AppComponent {
   title = 'personal-dashvoard';
   time: string;
   date: string;
-
+  backgrounds: string[] = ["https://source.unsplash.com/random/1920x1080"
+]
+  showBtn: Boolean = true;
   /**
    * Initializes the component and sets the current time and date.
    *
@@ -95,5 +113,25 @@ export class AppComponent {
     if (outlet.isActivated) {
       return outlet.activatedRouteData['tabNumber'];
     }
+  }
+  async changeBGImage(){
+    this.showBtn = true;
+    const res = await fetch("https://source.unsplash.com/random/1920x1080",{
+      method: 'HEAD'
+    });
+    const alreadyGot = this.backgrounds.includes(res.url);
+    if(alreadyGot){
+      return this.changeBGImage();
+    }
+    this.backgrounds.push(res.url);
+    
+    
+  }
+  onBGImageLoad(imgEvent: Event){
+    const imgElement = imgEvent.target as HTMLImageElement;
+    const src = imgElement.src
+    console.log(imgElement, src);
+    this.backgrounds = this.backgrounds.filter(b=> b === src)
+    this.showBtn = false
   }
 }
