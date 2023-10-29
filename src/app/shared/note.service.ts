@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Note } from './note.model';
-import { fromEvent } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NoteService {
   notes: Note[] = [];
+  storageListenSub: Subscription;
   constructor() {
     this.loadState();
-    fromEvent(window, 'storage').subscribe((event: StorageEvent) => {
+    this.storageListenSub = fromEvent(window, 'storage').subscribe((event: StorageEvent) => {
       console.log(event.key, "key");
       
       if (event.key === 'notes') {
@@ -59,5 +60,8 @@ export class NoteService {
       console.error(e);
     }
     // this.notes = notesStorage;
+  }
+  ngOnDestroy(): void {
+    if (this.storageListenSub) this.storageListenSub.unsubscribe()
   }
 }

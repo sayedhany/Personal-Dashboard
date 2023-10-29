@@ -27,4 +27,7 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
     this.todos = this.todoService.getTodos();
   }
+  trackById(index, item:Todo){
+    return item.id
+  }
 }

@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Todo } from './todo.model';
-import { fromEvent } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TodoService {
+export class TodoService implements OnDestroy {
   todos: Todo[] = [];
+  storageListenSub: Subscription;
   constructor() {
     this.loadState();
-    fromEvent(window, "storage").subscribe((event: StorageEvent)=>{
+    this.storageListenSub = fromEvent(window, "storage").subscribe((event: StorageEvent)=>{
       if (event.key === "todos") this.loadState()
     })
   }
@@ -48,5 +49,8 @@ export class TodoService {
       console.error(e);
     }
     // this.notes = notesStorage;
+  }
+  ngOnDestroy(): void {
+    if (this.storageListenSub) this.storageListenSub.unsubscribe()
   }
 }
